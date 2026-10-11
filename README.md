@@ -10,12 +10,17 @@ C'est la première brique d'un agent de tri d'offres : l'étape suivante compare
 
 ## En bref
 
+Résultats sur un **test vierge** : 14 nouvelles offres, annotées sans regarder aucune sortie de modèle et jamais utilisées pour prendre une décision.
+
 | | Modèle de base | **Pipeline final (v3)** |
 |---|---|---|
-| Sorties qui respectent le schéma | 1 / 14 | **14 / 14** |
-| F1 des compétences | 0,33 | **0,70** |
-| Type de contrat correct | 8 / 14 | **13 / 14** |
-| Ville correcte | 2 / 14 | **13 / 14** |
+| Sorties qui respectent le schéma | 3 / 14 | **13 / 14** |
+| F1 des compétences | 0,19 | **0,50** |
+| Ville correcte | 4 / 14 | **13 / 14** |
+| Langue correcte | 8 / 14 | **13 / 14** |
+| Type de contrat correct | 9 / 14 | **11 / 14** |
+
+Sur le test utilisé pendant le développement, le F1 des compétences atteignait 0,70. L'écart avec le test vierge (0,50) montre que ce premier test était optimiste ; les deux chiffres sont présentés plus bas.
 
 Ce qui a compté le plus n'est pas l'entraînement lui-même, mais **l'analyse d'erreurs** : elle a révélé des boucles de répétition (corrigées en changeant l'ordre des champs), puis des étiquettes incomplètes (corrigées par une réannotation avec un guide précis).
 
@@ -109,6 +114,8 @@ La perte d'entraînement descend de 0,48 à environ 0,1. Il n'y a pas d'ensemble
 
 ## Résultats
 
+### Test de développement
+
 Toutes les colonnes sont évaluées sur les **14 mêmes offres** et les **mêmes étiquettes (v3)**. Avec 14 offres, **une offre vaut 7 points** : les écarts d'une seule offre ne sont pas significatifs.
 
 | Métrique | Base | v1 | v2 | v3 | **v3 + réparation + garde-fous** |
@@ -135,6 +142,36 @@ Toutes les colonnes sont évaluées sur les **14 mêmes offres** et les **mêmes
 - La v3, entraînée sur des étiquettes plus complètes, donne le meilleur **F1 des compétences** (0,70), le champ le plus utile pour le matching avec un CV.
 - La v3 boucle à nouveau sur 2 offres (listes plus longues), mais la réparation les récupère entièrement grâce au choix de conception de la v2.
 
+### Test vierge
+
+Ce test de développement a servi à analyser les erreurs et à réviser les étiquettes : il est donc optimiste. Pour obtenir une mesure honnête, **14 nouvelles offres** ont été collectées et annotées avec le guide v3.1, **sans regarder aucune sortie de modèle** : 8 en français, 3 en anglais, 3 en arabe ; 6 CDI, 3 stages, 2 PFE, 2 missions freelance ; dont une offre hors informatique (RSE) et 4 offres LinkedIn, un format presque absent de l'entraînement. Le modèle n'a pas été réentraîné après ce test.
+
+| Métrique | Base | v3 | **v3 + réparation + garde-fous** |
+|---|---|---|---|
+| JSON valide (brut) | 13/14 | 12/14 | 12/14 → **14/14 après réparation** |
+| Schéma respecté | 3/14 | 11/14 | **13/14** |
+| Poste (souple) | 5/14 | 5/14 | 7/14 |
+| Entreprise | 12/14 | 13/14 | 14/14 |
+| Ville | 4/14 | 13/14 | 13/14 |
+| Type de contrat | 9/14 | 9/14 | 11/14 |
+| Mode de travail | 7/14 | 9/14 | 9/14 |
+| Durée | 9/14 | 11/14 | 11/14 |
+| Rémunération | 8/14 | 11/14 | 13/14 |
+| Langue | 8/14 | 12/14 | 13/14 |
+| **Compétences F1** | 0,19 | 0,47 | **0,50** |
+| Compétences précision | 0,30 | 0,66 | 0,62 |
+| Compétences rappel | 0,14 | 0,37 | 0,43 |
+| Taux d'ancrage | 0,67 | 0,74 | 0,68 |
+
+**Ce que montre le test vierge :**
+- **Le format et les champs simples généralisent bien** : schéma, entreprise, ville et langue restent au niveau du test de développement.
+- **Les compétences baissent nettement** (F1 0,70 → 0,50). Le problème principal est le **rappel** : le modèle prédit en moyenne 10,7 compétences par offre alors que les étiquettes en comptent 15,6, et il résume parfois au lieu de lister (« développement web full-stack » au lieu de JavaScript, TypeScript, Node.js, React…).
+- **Des noms non canoniques** : « Prisma ORM » au lieu de « Prisma », « REST APIs » au lieu de « API REST », « Lambda » au lieu de « AWS Lambda ». Un dictionnaire de normalisation en post-traitement corrigerait une partie de ces écarts.
+- **Un format nouveau dérange le modèle** : sur les offres LinkedIn, il réécrit le titre du poste et ne reconnaît pas « Sur site » comme `présentiel` (il renvoie une fois `"sur site"`, hors schéma).
+- **Le biais « arabe = freelance » identifié pendant la constitution du dataset se confirme** : sur l'offre d'emploi saoudienne, le modèle invente `freelance` et `rémunéré`.
+- **Arabe** : sur une mission Mostaql, il invente un titre (« Mouvement Salle Pro ») et produit des variantes répétitives de compétences (« développement d'applications mobile responsive design »…), une forme de boucle que la réparation ne détecte pas car les éléments ne sont pas strictement identiques.
+- **Les limites connues sont confirmées** : conversion des jours en mois fausse (9 jours → 0,17), et durée en fourchette ignorée (« 3 à 6 mois » → `null`), puisque la règle v3.1 a été ajoutée après l'entraînement de la v3.
+
 ---
 
 ## Démarche : ce que chaque version a appris
@@ -160,14 +197,19 @@ Sur les compétences « inventées » par la v2, **58 sur 74 figuraient en réal
 Un test opérationnel (« est-ce que cela s'écrirait dans la rubrique Compétences d'un CV ? »), des noms canoniques uniques en alphabet latin, la séparation des compétences composées. Bilan : **211 compétences ajoutées, 21 retirées, 91 renommées**, journalisées dans `journal_reannotation_v3.csv`. Le F1 des compétences monte à 0,70.
 
 ### Durée — encore une règle manquante
-La v3 « perd » 3 offres sur la durée. Analyse : deux offres PFE indiquent « Internship 3-6 months » mais étaient étiquetées `null` faute de règle pour les fourchettes. Sur l'une, le modèle avait la bonne réponse (3 mois). Règle ajoutée au guide (v3.1, borne basse) et étiquettes corrigées. **Les chiffres du tableau ont été calculés avant cette correction.**
+La v3 « perd » 3 offres sur la durée. Analyse : deux offres PFE indiquent « Internship 3-6 months » mais étaient étiquetées `null` faute de règle pour les fourchettes. Sur l'une, le modèle avait la bonne réponse (3 mois). Règle ajoutée au guide (v3.1, borne basse) et étiquettes corrigées. **Les chiffres du test de développement ont été calculés avant cette correction.**
+
+### Test vierge — la mesure honnête
+14 nouvelles offres annotées à l'aveugle. Le format reste solide, mais le F1 des compétences tombe à 0,50 : voir la section Résultats.
 
 ---
 
 ## Limites
 
-- **Test de petite taille** (14 offres) : les écarts d'une offre ne sont pas significatifs.
-- **Test vu pendant l'analyse d'erreurs** : les étiquettes du test ont été révisées après avoir observé les sorties de la v2. Les règles s'appliquent à tout le dataset, mais cela avantage les versions récentes. Un **test vierge** est prévu (voir ci-dessous).
+- **Tests de petite taille** (2 × 14 offres) : les écarts d'une offre ne sont pas significatifs.
+- **Test de développement optimiste** : ses étiquettes ont été révisées après avoir observé les sorties de la v2. C'est pourquoi le chiffre de référence est celui du **test vierge**.
+- **Rappel des compétences limité** sur les offres qui en listent beaucoup (jusqu'à 49 dans le test vierge).
+- **Peu d'offres LinkedIn** à l'entraînement : le modèle généralise mal à ce format.
 - **Arabe peu représentatif** : 10 des 13 offres en arabe sont des missions freelance (Mostaql), les 3 autres viennent d'Arabie saoudite, dont 2 traduites automatiquement par la plateforme. Aucune offre d'emploi tunisienne en arabe n'a été trouvée.
 - **Arithmétique** : le modèle convertit mal les jours en mois (3 jours → 0,33 au lieu de 0,1).
 - **Garde-fou de durée inefficace** : il devait forcer `null` quand l'offre ne contient aucune durée, mais il détecte « 3 ans d'expérience » comme une durée. Il n'a donc rien corrigé.
@@ -178,8 +220,8 @@ La v3 « perd » 3 offres sur la durée. Analyse : deux offres PFE indiquent « 
 
 ## Prochaines étapes
 
-1. **Test vierge** : 10 à 15 nouvelles offres annotées avec le guide v3.1, sans regarder aucune sortie de modèle.
-2. **v4** : remplacer `duree_mois` par `duree_valeur` + `duree_unite` et faire la conversion en code. Le modèle extrait, le code calcule.
+1. **Dictionnaire de normalisation des compétences** en post-traitement, construit à partir du guide (« Prisma ORM » → « Prisma », « REST APIs » → « API REST »). Il servira aussi au matching.
+2. **v4** : plus de données (offres LinkedIn, offres d'emploi en arabe hors freelance, listes de compétences longues), et `duree_mois` remplacé par `duree_valeur` + `duree_unite`, la conversion se faisant en code.
 3. **Matching CV ↔ offre** : embeddings multilingues pour scorer la compatibilité, plus la liste des compétences communes et manquantes.
 4. **Démo** : Space Hugging Face, puis application React + NestJS.
 
@@ -191,13 +233,15 @@ La v3 « perd » 3 offres sur la durée. Analyse : deux offres PFE indiquent « 
 ├── README.md
 ├── GUIDE_ANNOTATION.md          # règles d'annotation (référence unique)
 ├── notebooks/
-│   ├── etape1_baseline.ipynb        # test du modèle de base
-│   ├── etape2_annotation.ipynb      # outil d'annotation (widgets Colab)
-│   ├── etape3_finetuning_v1.ipynb   # découpage, baseline, QLoRA v1, évaluation
-│   ├── etape4_v2.ipynb              # compétences en dernier + réparation
-│   └── etape5_v3.ipynb              # étiquettes v3 + métriques complètes
+│   ├── 01_baseline.ipynb        # test du modèle de base
+│   ├── 02_annotation.ipynb      # outil d'annotation (widgets Colab)
+│   ├── 03_finetuning_v1.ipynb   # découpage, baseline, QLoRA v1, évaluation
+│   ├── 04_v2.ipynb              # compétences en dernier + réparation
+│   ├── 05_v3.ipynb              # étiquettes v3 + métriques complètes
+│   └── 06_test_vierge.ipynb     # évaluation sur le test vierge (sans réentraînement)
 └── resultats/
     ├── comparaison_finale_v3.csv
+    ├── comparaison_test_vierge.csv
     └── courbe_perte_v3.png
 ```
 
@@ -213,8 +257,7 @@ La v3 « perd » 3 offres sur la durée. Analyse : deux offres PFE indiquent « 
 
 ## Auteure
 
-**Mayss jaballi** — étudiante ingénieure en développement web, ESPRIT (Tunisie).
-ce projet est ma porte d'entrée vers le ML appliqué.
-jaballimayss@gmail.com
+**Mayss Jaballi** — étudiante ingénieure en développement web, ESPRIT (Tunisie).
+Je travaille principalement avec React et NestJS, et ce projet est ma porte d'entrée vers le ML appliqué.
 
-https://www.linkedin.com/in/mayss-jaballi-08145028a/
+<!-- Ajoute ici ton LinkedIn et ton email -->
