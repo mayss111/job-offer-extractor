@@ -258,6 +258,8 @@ La v3 « perd » 3 offres sur la durée. Analyse : deux offres PFE indiquent « 
 ## Auteure
 
 **Mayss Jaballi** — étudiante ingénieure en développement web, ESPRIT (Tunisie).
-Je travaille principalement avec React et NestJS, et ce projet est ma porte d'entrée vers le ML appliqué.
+  ce projet est ma porte d'entrée vers le ML appliqué.µ
+  jaballimayss@gmail.com
+  
+https://www.linkedin.com/in/mayss-jaballi-08145028a/
 
-<!-- Ajoute ici ton LinkedIn et ton email -->
