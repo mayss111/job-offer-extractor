@@ -1,0 +1,21 @@
+,base,v3 brut,v3 réparé,v3 + garde-fous
+JSON valide,0.929,0.857,0.857,1.0
+Réparées,0.0,0.0,0.143,0.0
+Schéma respecté,0.214,0.786,0.929,0.929
+poste,0.357,0.357,0.5,0.5
+entreprise,0.857,0.929,1.0,1.0
+ville,0.286,0.929,0.929,0.929
+type_contrat,0.643,0.643,0.786,0.786
+mode_travail,0.5,0.643,0.643,0.643
+duree_mois,0.643,0.786,0.786,0.786
+remuneration,0.571,0.786,0.929,0.929
+langue_offre,0.571,0.857,0.929,0.929
+poste_souple,0.357,0.357,0.5,0.5
+Compétences précision,0.301,0.661,0.62,0.62
+Compétences rappel,0.142,0.365,0.425,0.425
+Compétences F1,0.193,0.471,0.504,0.504
+Compétences souples P,0.314,0.661,0.62,0.62
+Compétences souples R,0.151,0.365,0.425,0.425
+Compétences souples F1,0.204,0.471,0.504,0.504
+Taux d’ancrage,0.667,0.744,0.68,0.68
+Compétences / offre,7.5,8.643,10.714,10.714
