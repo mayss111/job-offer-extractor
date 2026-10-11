@@ -24,6 +24,8 @@ Sur le test utilisé pendant le développement, le F1 des compétences atteignai
 
 Ce qui a compté le plus n'est pas l'entraînement lui-même, mais **l'analyse d'erreurs** : elle a révélé des boucles de répétition (corrigées en changeant l'ordre des champs), puis des étiquettes incomplètes (corrigées par une réannotation avec un guide précis).
 
+La seconde brique, le **matching profil ↔ offre**, a été évaluée sur trois lots notés par les candidates elles-mêmes. Elle n'a **pas** pu être validée, et la section dédiée explique pourquoi.
+
 ---
 
 ## Pipeline
@@ -174,6 +176,51 @@ Ce test de développement a servi à analyser les erreurs et à réviser les ét
 
 ---
 
+## Matching profil ↔ offre
+
+Deuxième brique : à partir des offres extraites et d'un profil candidat, classer les offres et **expliquer** chaque correspondance (compétences communes, proches, manquantes).
+
+### Méthode
+
+- **Normalisation** : un dictionnaire de plus de 100 variantes ramène chaque compétence à un nom canonique, des deux côtés (« React.js » → React, « Prisma ORM » → Prisma, « بايثون » → Python), et sépare les compétences composées.
+- **Quatre composantes** :
+  1. couverture exacte : la part des compétences de l'offre présentes dans le profil ;
+  2. couverture sémantique : les compétences non couvertes reçoivent un crédit partiel selon leur proximité avec celles du profil, mesurée avec des embeddings multilingues (`intfloat/multilingual-e5-base`, qui couvrent aussi l'arabe) ;
+  3. similarité globale entre le texte de l'offre et celui du profil ;
+  4. critères pratiques : type de contrat, ville (ou télétravail), langue.
+- **Explication** affichée pour chaque offre : ✅ compétences communes, 🟡 proches (« Vue.js ≈ React »), ❌ manquantes.
+- Tout tourne **sur CPU**.
+
+### Évaluation
+
+Deux profils réels (une élève-ingénieure full-stack qui cherche un PFE, une jeune diplômée full-stack et cybersécurité qui cherche un CDI ou un SIVP). Chaque personne a noté elle-même les offres de 0 (hors sujet) à 3 (« je postulerais »), **avant de voir les scores**. Métrique principale : **NDCG@5**, qui mesure si les 5 offres classées en tête sont les mieux notées. Comme pour l'extraction, chaque lot ne sert qu'une fois : les décisions prises sur un lot sont testées sur le suivant.
+
+**Lot 1 (28 offres) : des notes trop généreuses.** 26 offres sur 28 ont reçu 2 ou 3, pour chacun des deux profils. Un classement aléatoire obtient déjà un NDCG@5 de 0,71. Les composantes de compétences ne font pas mieux que le hasard (0,68 à 0,70). Seuls les critères pratiques s'en détachent (0,86), et uniquement grâce au profil CDI (corrélation de Spearman 0,70, contre 0,06 pour le profil PFE). Les poids réglés par validation croisée (0,81) font moins bien que les critères pratiques seuls : avec 14 offres par moitié, ils sur-apprennent. Ce lot a servi à choisir une méthode sans poids à régler : *filtrer d'abord sur les critères pratiques, puis classer par compétences*.
+
+**Lot 2 (20 nouvelles offres, consigne stricte : 5 notes « 3 » au maximum)** :
+
+| NDCG@5 | Aléatoire | Critères pratiques seuls | Pratique d'abord, puis compétences |
+|---|---|---|---|
+| Profil CDI | 0,47 | 0,61 | **0,77** |
+| Profil PFE | 0,33 | 0,07 | 0,28 |
+
+La méthode fonctionne pour le profil CDI, mais échoue pour le profil PFE. L'analyse montre pourquoi : les deux offres classées en tête sont des **PFE hors du domaine** (recrutement RH, génie industriel), propulsées par le contrat et la ville malgré des compétences sans rapport, alors que les offres préférées de la candidate étaient des **stages et un CDI**, pas des PFE. Deux corrections décidées sur ce lot : ajouter « stage » au profil, et utiliser les compétences comme garde-fou (`pratique × compétences`).
+
+**Lot 3 (15 nouvelles offres) : inconclusif.** Le profil PFE n'a noté que 2 offres « 3 » : la méthode corrigée fait 0,22 contre 0,43 pour le hasard, mais avec deux offres positives, déplacer une seule offre change le score du simple au quadruple. Le profil CDI a noté 12 offres sur 15 « 3 » : le hasard atteint 0,84 et toutes les méthodes 1,0, sans rien départager.
+
+### Conclusion
+
+**Le score de matching n'a pas pu être validé.** Sur trois lots indépendants (63 offres notées par les personnes concernées), la couverture des compétences ne prédit pas les préférences du profil PFE, et les critères pratiques n'ont un effet clair que pour le profil CDI. Causes identifiées :
+- **Un biais de conception** : la couverture mesure la part des compétences *de l'offre* présentes dans le profil, ce qui favorise les offres vagues (une offre qui ne cite que « développement mobile » est couverte à 100 %).
+- **Un profil déclaré différent des choix réels** : la candidate « cherche un PFE », mais préfère en pratique certains stages et CDI.
+- **Des notations peu discriminantes** : une candidate en recherche active juge acceptables 80 % des offres de sa région, ce qui est un comportement réel mais rend le classement difficile à évaluer sur de petits lots.
+
+Résultat positif : sur le lot 1, le matching obtient le même NDCG@5 avec les compétences **extraites par le modèle v3** qu'avec les étiquettes manuelles (0,83 contre 0,81). Les erreurs d'extraction ne dégradent donc pas le classement. Ce résultat est cependant à nuancer, puisque les compétences pèsent peu dans ces notes.
+
+**Conséquence pour l'application** : plutôt qu'un « score de compatibilité » non démontré, la démo affichera des informations vérifiables, avec des filtres (contrat, ville, mode de travail) et, pour chaque offre, les compétences communes, proches et manquantes par rapport au CV. Le tri reste à l'utilisateur.
+
+---
+
 ## Démarche : ce que chaque version a appris
 
 ### Baseline — le modèle de base ne suit pas le format
@@ -222,7 +269,7 @@ La v3 « perd » 3 offres sur la durée. Analyse : deux offres PFE indiquent « 
 
 1. **Dictionnaire de normalisation des compétences** en post-traitement, construit à partir du guide (« Prisma ORM » → « Prisma », « REST APIs » → « API REST »). Il servira aussi au matching.
 2. **v4** : plus de données (offres LinkedIn, offres d'emploi en arabe hors freelance, listes de compétences longues), et `duree_mois` remplacé par `duree_valeur` + `duree_unite`, la conversion se faisant en code.
-3. **Matching CV ↔ offre** : embeddings multilingues pour scorer la compatibilité, plus la liste des compétences communes et manquantes.
+3. **Matching** : revoir le score (couverture du point de vue du *profil*, pondération des compétences selon leur importance dans l'offre), puis l'évaluer sur un lot plus grand, noté par davantage de personnes.
 4. **Démo** : Space Hugging Face, puis application React + NestJS.
 
 ---
@@ -238,10 +285,14 @@ La v3 « perd » 3 offres sur la durée. Analyse : deux offres PFE indiquent « 
 │   ├── 03_finetuning_v1.ipynb   # découpage, baseline, QLoRA v1, évaluation
 │   ├── 04_v2.ipynb              # compétences en dernier + réparation
 │   ├── 05_v3.ipynb              # étiquettes v3 + métriques complètes
-│   └── 06_test_vierge.ipynb     # évaluation sur le test vierge (sans réentraînement)
+│   ├── 06_test_vierge.ipynb     # évaluation sur le test vierge (sans réentraînement)
+│   └── 07_matching.ipynb        # matching profil ↔ offre et son évaluation (CPU)
 └── resultats/
     ├── comparaison_finale_v3.csv
     ├── comparaison_test_vierge.csv
+    ├── matching_evaluation.csv
+    ├── matching_evaluation_finale.csv
+    ├── matching_evaluation_lot3.csv
     └── courbe_perte_v3.png
 ```
 
@@ -258,8 +309,7 @@ La v3 « perd » 3 offres sur la durée. Analyse : deux offres PFE indiquent « 
 ## Auteure
 
 **Mayss Jaballi** — étudiante ingénieure en développement web, ESPRIT (Tunisie).
-  ce projet est ma porte d'entrée vers le ML appliqué.µ
-  jaballimayss@gmail.com
-  
-https://www.linkedin.com/in/mayss-jaballi-08145028a/
+ et ce projet est ma porte d'entrée vers le ML appliqué.
 
+jaballimayss@gmail.com
+https://www.linkedin.com/in/mayss-jaballi-08145028a/
