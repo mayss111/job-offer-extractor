@@ -1,0 +1,12 @@
+# Données privées : ne jamais publier
+data/
+*.jsonl
+details_*.csv
+journal_*.csv
+etiquettes_*.json
+adapter_*/
+
+# Fichiers locaux
+.ipynb_checkpoints/
+.codacy/
+.github/instructions/
