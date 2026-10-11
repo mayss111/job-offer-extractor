@@ -1,0 +1,8 @@
+,NDCG@5,Spearman,Précision@5
+aléatoire,0.711,-0.004,0.934
+couverture exacte seule,0.683,0.144,1.0
+couverture sémantique seule,0.703,0.172,1.0
+similarité texte seule,0.472,-0.179,0.8
+critères pratiques seuls,0.856,0.378,0.9
+hybride (poids par défaut),0.677,0.222,1.0
+"hybride (poids réglés, validation croisée)",0.808,0.325,0.95

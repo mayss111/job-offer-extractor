@@ -1,0 +1,11 @@
+profil,méthode,NDCG@5,Précision@5 (note 3)
+mayss,aléatoire,0.426,0.119
+mayss,critères pratiques seuls,0.49,0.2
+mayss,compétences seules,0.215,0.0
+mayss,pratique d’abord (lot 2),0.49,0.2
+mayss,★ pratique × compétences,0.215,0.0
+takwa,aléatoire,0.838,0.804
+takwa,critères pratiques seuls,1.0,1.0
+takwa,compétences seules,1.0,1.0
+takwa,pratique d’abord (lot 2),1.0,1.0
+takwa,★ pratique × compétences,1.0,1.0
