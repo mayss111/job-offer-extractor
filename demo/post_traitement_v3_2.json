@@ -1,0 +1,2494 @@
+{
+ "lexique": {
+  ".NET": {
+   "formes": [
+    ".NET",
+    ".net core",
+    "dotnet"
+   ],
+   "precision": 0.8,
+   "vu": 5
+  },
+  ".NET MAUI": {
+   "formes": [
+    ".NET MAUI"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "API REST": {
+   "formes": [
+    "API REST",
+    "api restful",
+    "apis rest",
+    "rest api",
+    "rest apis",
+    "restful api",
+    "restful apis",
+    "restful services",
+    "web apis"
+   ],
+   "precision": 1.0,
+   "vu": 23
+  },
+  "APNs": {
+   "formes": [
+    "APNs"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "ASP.NET Core": {
+   "formes": [
+    "ASP.NET Core",
+    "asp.net core"
+   ],
+   "precision": 1.0,
+   "vu": 2
+  },
+  "ASP.NET Core MVC": {
+   "formes": [
+    "ASP.NET Core MVC"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "AWS": {
+   "formes": [
+    "AWS",
+    "amazon web services"
+   ],
+   "precision": 1.0,
+   "vu": 8
+  },
+  "Agile": {
+   "formes": [
+    "Agile"
+   ],
+   "precision": 1.0,
+   "vu": 13
+  },
+  "Airflow": {
+   "formes": [
+    "Airflow"
+   ],
+   "precision": 1.0,
+   "vu": 3
+  },
+  "Android": {
+   "formes": [
+    "Android",
+    "برمجة أندرويد"
+   ],
+   "precision": 1.0,
+   "vu": 8
+  },
+  "Android Studio": {
+   "formes": [
+    "Android Studio"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "Angular": {
+   "formes": [
+    "Angular",
+    "angular js",
+    "angularjs"
+   ],
+   "precision": 0.909,
+   "vu": 11
+  },
+  "Angular Material": {
+   "formes": [
+    "Angular Material"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "Anima": {
+   "formes": [
+    "Anima"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "Ansible": {
+   "formes": [
+    "Ansible"
+   ],
+   "precision": 1.0,
+   "vu": 2
+  },
+  "Ant": {
+   "formes": [
+    "Ant"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "Anthropic": {
+   "formes": [
+    "Anthropic"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "App Store Connect": {
+   "formes": [
+    "App Store Connect"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "AppSheet": {
+   "formes": [
+    "AppSheet"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "Artisan": {
+   "formes": [
+    "Artisan"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "Astro": {
+   "formes": [
+    "Astro"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "AtScale": {
+   "formes": [
+    "AtScale"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "Azure": {
+   "formes": [
+    "Azure",
+    "azure cloud",
+    "microsoft azure"
+   ],
+   "precision": 0.889,
+   "vu": 9
+  },
+  "Azure Data Factory": {
+   "formes": [
+    "Azure Data Factory"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "Azure Data Lake Storage": {
+   "formes": [
+    "Azure Data Lake Storage"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "Azure DevOps": {
+   "formes": [
+    "Azure DevOps",
+    "azuredevops"
+   ],
+   "precision": 1.0,
+   "vu": 2
+  },
+  "Azure OpenAI": {
+   "formes": [
+    "Azure OpenAI"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "Bash": {
+   "formes": [
+    "Bash"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "BigQuery": {
+   "formes": [
+    "BigQuery"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "Blade": {
+   "formes": [
+    "Blade"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "Blazor": {
+   "formes": [
+    "Blazor"
+   ],
+   "precision": 1.0,
+   "vu": 3
+  },
+  "Bluetooth Thermal Printer": {
+   "formes": [
+    "Bluetooth Thermal Printer"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "C#": {
+   "formes": [
+    "C#"
+   ],
+   "precision": 0.857,
+   "vu": 7
+  },
+  "C++": {
+   "formes": [
+    "C++"
+   ],
+   "precision": 1.0,
+   "vu": 2
+  },
+  "CI/CD": {
+   "formes": [
+    "CI/CD"
+   ],
+   "precision": 1.0,
+   "vu": 16
+  },
+  "CRO": {
+   "formes": [
+    "CRO"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "CSS": {
+   "formes": [
+    "CSS",
+    "css",
+    "css3"
+   ],
+   "precision": 1.0,
+   "vu": 10
+  },
+  "CVthèques": {
+   "formes": [
+    "CVthèques"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "Canva": {
+   "formes": [
+    "Canva"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "CapCut": {
+   "formes": [
+    "CapCut"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "Celery": {
+   "formes": [
+    "Celery"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "Centreon": {
+   "formes": [
+    "Centreon"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "Chart of Accounts": {
+   "formes": [
+    "Chart of Accounts"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "Checkpoint": {
+   "formes": [
+    "Checkpoint"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "Cisco": {
+   "formes": [
+    "Cisco"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "Claude": {
+   "formes": [
+    "Claude"
+   ],
+   "precision": 1.0,
+   "vu": 3
+  },
+  "Claude Code": {
+   "formes": [
+    "Claude Code"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "Claude Opus 5.5": {
+   "formes": [
+    "Claude Opus 5.5"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "Cloud Storage": {
+   "formes": [
+    "Cloud Storage"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "Cloudflare": {
+   "formes": [
+    "Cloudflare"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "Codex": {
+   "formes": [
+    "Codex"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "Computer Vision": {
+   "formes": [
+    "Computer Vision"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "Convex": {
+   "formes": [
+    "Convex"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "Copilot": {
+   "formes": [
+    "Copilot"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "Core Web Vitals": {
+   "formes": [
+    "Core Web Vitals"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "Coverage": {
+   "formes": [
+    "Coverage"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "Cube": {
+   "formes": [
+    "Cube"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "Cursor": {
+   "formes": [
+    "Cursor"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "DNS": {
+   "formes": [
+    "DNS"
+   ],
+   "precision": 1.0,
+   "vu": 2
+  },
+  "Dart": {
+   "formes": [
+    "Dart"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "Databricks": {
+   "formes": [
+    "Databricks"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "Dataflow": {
+   "formes": [
+    "Dataflow"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "Debian": {
+   "formes": [
+    "Debian"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "Deep Learning": {
+   "formes": [
+    "Deep Learning",
+    "apprentissage profond",
+    "deep learning"
+   ],
+   "precision": 1.0,
+   "vu": 2
+  },
+  "Delta Lake": {
+   "formes": [
+    "Delta Lake"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "Deluge": {
+   "formes": [
+    "Deluge"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "DevExpress": {
+   "formes": [
+    "DevExpress"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "DhiWise": {
+   "formes": [
+    "DhiWise"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "Dify": {
+   "formes": [
+    "Dify"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "Django": {
+   "formes": [
+    "Django"
+   ],
+   "precision": 1.0,
+   "vu": 5
+  },
+  "Django REST Framework": {
+   "formes": [
+    "Django REST Framework"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "Docker": {
+   "formes": [
+    "Docker"
+   ],
+   "precision": 1.0,
+   "vu": 12
+  },
+  "Docker Compose": {
+   "formes": [
+    "Docker Compose"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "EC2": {
+   "formes": [
+    "EC2"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "ELK Stack": {
+   "formes": [
+    "ELK Stack",
+    "elk",
+    "elk stack"
+   ],
+   "precision": 1.0,
+   "vu": 2
+  },
+  "ELT": {
+   "formes": [
+    "ELT"
+   ],
+   "precision": 1.0,
+   "vu": 3
+  },
+  "ERP": {
+   "formes": [
+    "ERP"
+   ],
+   "precision": 0.833,
+   "vu": 6
+  },
+  "ERPNext": {
+   "formes": [
+    "ERPNext"
+   ],
+   "precision": 1.0,
+   "vu": 3
+  },
+  "ESRI": {
+   "formes": [
+    "ESRI"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "ETL": {
+   "formes": [
+    "ETL"
+   ],
+   "precision": 1.0,
+   "vu": 4
+  },
+  "Eclipse": {
+   "formes": [
+    "Eclipse"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "Elementor": {
+   "formes": [
+    "Elementor"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "Eloquent": {
+   "formes": [
+    "Eloquent",
+    "eloquent orm"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "Entity Framework": {
+   "formes": [
+    "Entity Framework"
+   ],
+   "precision": 1.0,
+   "vu": 2
+  },
+  "Entity Framework Core": {
+   "formes": [
+    "Entity Framework Core"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "Excel": {
+   "formes": [
+    "Excel"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "Expo": {
+   "formes": [
+    "Expo"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "Expo EAS": {
+   "formes": [
+    "Expo EAS"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "Express.js": {
+   "formes": [
+    "Express.js",
+    "express",
+    "expressjs"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "FCM": {
+   "formes": [
+    "FCM"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "FastAPI": {
+   "formes": [
+    "FastAPI"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "Firebase": {
+   "formes": [
+    "Firebase"
+   ],
+   "precision": 1.0,
+   "vu": 3
+  },
+  "Firebase Cloud Messaging": {
+   "formes": [
+    "Firebase Cloud Messaging"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "Flask": {
+   "formes": [
+    "Flask"
+   ],
+   "precision": 1.0,
+   "vu": 2
+  },
+  "Flutter": {
+   "formes": [
+    "Flutter"
+   ],
+   "precision": 1.0,
+   "vu": 6
+  },
+  "FlutterFlow": {
+   "formes": [
+    "FlutterFlow"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "Fortran": {
+   "formes": [
+    "Fortran"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "GCP": {
+   "formes": [
+    "GCP",
+    "google cloud",
+    "google cloud platform"
+   ],
+   "precision": 1.0,
+   "vu": 6
+  },
+  "GDPR": {
+   "formes": [
+    "GDPR",
+    "rgpd"
+   ],
+   "precision": 1.0,
+   "vu": 2
+  },
+  "Gandi": {
+   "formes": [
+    "Gandi"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "Git": {
+   "formes": [
+    "Git"
+   ],
+   "precision": 1.0,
+   "vu": 26
+  },
+  "GitHub": {
+   "formes": [
+    "GitHub"
+   ],
+   "precision": 0.875,
+   "vu": 8
+  },
+  "GitHub Actions": {
+   "formes": [
+    "GitHub Actions",
+    "github action"
+   ],
+   "precision": 1.0,
+   "vu": 2
+  },
+  "GitLab": {
+   "formes": [
+    "GitLab"
+   ],
+   "precision": 1.0,
+   "vu": 3
+  },
+  "GitLab CI": {
+   "formes": [
+    "GitLab CI",
+    "gitlab ci/cd",
+    "gitlab-ci"
+   ],
+   "precision": 1.0,
+   "vu": 2
+  },
+  "Glide": {
+   "formes": [
+    "Glide"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "Google Maps": {
+   "formes": [
+    "Google Maps"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "Google Play Console": {
+   "formes": [
+    "Google Play Console"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "Gradle": {
+   "formes": [
+    "Gradle"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "Grafana": {
+   "formes": [
+    "Grafana"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "Génie Industriel": {
+   "formes": [
+    "Génie Industriel"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "HPC": {
+   "formes": [
+    "HPC"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "HTML": {
+   "formes": [
+    "HTML",
+    "html",
+    "html5"
+   ],
+   "precision": 1.0,
+   "vu": 12
+  },
+  "HTTP": {
+   "formes": [
+    "HTTP"
+   ],
+   "precision": 1.0,
+   "vu": 2
+  },
+  "Hadoop": {
+   "formes": [
+    "Hadoop"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "Hibernate": {
+   "formes": [
+    "Hibernate"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "IPSec": {
+   "formes": [
+    "IPSec"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "Industry 4.0": {
+   "formes": [
+    "Industry 4.0"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "Infrastructure as Code": {
+   "formes": [
+    "Infrastructure as Code"
+   ],
+   "precision": 1.0,
+   "vu": 2
+  },
+  "IntelliJ IDEA": {
+   "formes": [
+    "IntelliJ IDEA"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "Ionic": {
+   "formes": [
+    "Ionic"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "JEE": {
+   "formes": [
+    "JEE",
+    "java ee"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "JSON": {
+   "formes": [
+    "JSON"
+   ],
+   "precision": 1.0,
+   "vu": 2
+  },
+  "JWT": {
+   "formes": [
+    "JWT"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "Java": {
+   "formes": [
+    "Java",
+    "java 17",
+    "java 21"
+   ],
+   "precision": 1.0,
+   "vu": 8
+  },
+  "JavaScript": {
+   "formes": [
+    "JS",
+    "JavaScript",
+    "es6",
+    "javascript",
+    "جافا سكريبت"
+   ],
+   "precision": 1.0,
+   "vu": 15
+  },
+  "Jenkins": {
+   "formes": [
+    "Jenkins"
+   ],
+   "precision": 1.0,
+   "vu": 2
+  },
+  "Jira": {
+   "formes": [
+    "Jira"
+   ],
+   "precision": 1.0,
+   "vu": 4
+  },
+  "Jira Service Management": {
+   "formes": [
+    "Jira Service Management"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "Juniper": {
+   "formes": [
+    "Juniper"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "Jupyter": {
+   "formes": [
+    "Jupyter"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "Kafka": {
+   "formes": [
+    "Kafka"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "Kotlin": {
+   "formes": [
+    "Kotlin"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "Kubernetes": {
+   "formes": [
+    "Kubernetes",
+    "k8s",
+    "kubernetes (eks)"
+   ],
+   "precision": 1.0,
+   "vu": 4
+  },
+  "LINQ": {
+   "formes": [
+    "LINQ"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "LLM": {
+   "formes": [
+    "LLM",
+    "large language models",
+    "llms"
+   ],
+   "precision": 1.0,
+   "vu": 9
+  },
+  "LangChain": {
+   "formes": [
+    "LangChain"
+   ],
+   "precision": 1.0,
+   "vu": 2
+  },
+  "LangGraph": {
+   "formes": [
+    "LangGraph"
+   ],
+   "precision": 1.0,
+   "vu": 2
+  },
+  "Laravel": {
+   "formes": [
+    "Laravel",
+    "laravel 11",
+    "laravel 12"
+   ],
+   "precision": 0.857,
+   "vu": 7
+  },
+  "Laravel Reverb": {
+   "formes": [
+    "Laravel Reverb"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "Let's Encrypt": {
+   "formes": [
+    "Let's Encrypt"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "LightGBM": {
+   "formes": [
+    "LightGBM"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "LinkedIn": {
+   "formes": [
+    "LinkedIn"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "Linux": {
+   "formes": [
+    "Linux"
+   ],
+   "precision": 1.0,
+   "vu": 6
+  },
+  "LlamaIndex": {
+   "formes": [
+    "LlamaIndex"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "Load Balancer": {
+   "formes": [
+    "Load Balancer"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "Looker": {
+   "formes": [
+    "Looker"
+   ],
+   "precision": 1.0,
+   "vu": 2
+  },
+  "Low-Code": {
+   "formes": [
+    "Low-Code"
+   ],
+   "precision": 1.0,
+   "vu": 2
+  },
+  "MLOps": {
+   "formes": [
+    "MLOps"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "MVC": {
+   "formes": [
+    "MVC"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "Machine Learning": {
+   "formes": [
+    "ML",
+    "Machine Learning",
+    "apprentissage automatique",
+    "machine learning"
+   ],
+   "precision": 1.0,
+   "vu": 6
+  },
+  "Make": {
+   "formes": [
+    "Make"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "MariaDB": {
+   "formes": [
+    "MariaDB"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "Medallion architecture": {
+   "formes": [
+    "Medallion architecture"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "Microsoft Fabric": {
+   "formes": [
+    "Microsoft Fabric"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "MongoDB": {
+   "formes": [
+    "MongoDB",
+    "mongo",
+    "mongodb"
+   ],
+   "precision": 1.0,
+   "vu": 3
+  },
+  "MySQL": {
+   "formes": [
+    "MySQL"
+   ],
+   "precision": 1.0,
+   "vu": 6
+  },
+  "NLP": {
+   "formes": [
+    "NLP",
+    "traitement automatique du langage naturel"
+   ],
+   "precision": 1.0,
+   "vu": 3
+  },
+  "Nagios": {
+   "formes": [
+    "Nagios"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "NestJS": {
+   "formes": [
+    "NestJS",
+    "nest",
+    "nest.js",
+    "nestjs"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "Next.js": {
+   "formes": [
+    "Next.js",
+    "next",
+    "nextjs"
+   ],
+   "precision": 1.0,
+   "vu": 3
+  },
+  "Nginx": {
+   "formes": [
+    "Nginx"
+   ],
+   "precision": 1.0,
+   "vu": 2
+  },
+  "No-Code": {
+   "formes": [
+    "No-Code"
+   ],
+   "precision": 1.0,
+   "vu": 2
+  },
+  "NoSQL": {
+   "formes": [
+    "NoSQL"
+   ],
+   "precision": 1.0,
+   "vu": 6
+  },
+  "Node.js": {
+   "formes": [
+    "Node.js",
+    "node",
+    "node js",
+    "nodejs"
+   ],
+   "precision": 1.0,
+   "vu": 5
+  },
+  "NumPy": {
+   "formes": [
+    "NumPy"
+   ],
+   "precision": 1.0,
+   "vu": 2
+  },
+  "OAuth": {
+   "formes": [
+    "OAuth"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "OVH": {
+   "formes": [
+    "OVH"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "OVHcloud": {
+   "formes": [
+    "OVHcloud"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "OWASP": {
+   "formes": [
+    "OWASP"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "Odoo": {
+   "formes": [
+    "Odoo"
+   ],
+   "precision": 1.0,
+   "vu": 3
+  },
+  "Omni": {
+   "formes": [
+    "Omni"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "OpenAI": {
+   "formes": [
+    "OpenAI"
+   ],
+   "precision": 1.0,
+   "vu": 2
+  },
+  "Oracle Database": {
+   "formes": [
+    "Oracle Database"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "PHP": {
+   "formes": [
+    "PHP"
+   ],
+   "precision": 1.0,
+   "vu": 8
+  },
+  "PHPUnit": {
+   "formes": [
+    "PHPUnit"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "PL/SQL": {
+   "formes": [
+    "PL/SQL"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "Packet Shaper": {
+   "formes": [
+    "Packet Shaper"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "PaloAlto": {
+   "formes": [
+    "PaloAlto"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "Pandas": {
+   "formes": [
+    "Pandas"
+   ],
+   "precision": 1.0,
+   "vu": 2
+  },
+  "Perl": {
+   "formes": [
+    "Perl"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "Photovoltaïque": {
+   "formes": [
+    "Photovoltaïque"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "Pinia": {
+   "formes": [
+    "Pinia"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "Playwright": {
+   "formes": [
+    "Playwright"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "PostgreSQL": {
+   "formes": [
+    "PostgreSQL",
+    "postgre",
+    "postgres",
+    "postgresql"
+   ],
+   "precision": 1.0,
+   "vu": 8
+  },
+  "Postman": {
+   "formes": [
+    "Postman"
+   ],
+   "precision": 1.0,
+   "vu": 2
+  },
+  "Power BI": {
+   "formes": [
+    "Power BI"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "Prefect": {
+   "formes": [
+    "Prefect"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "Prometheus": {
+   "formes": [
+    "Prometheus"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "Proxy Server": {
+   "formes": [
+    "Proxy Server"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "Pub/Sub": {
+   "formes": [
+    "Pub/Sub"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "Pusher": {
+   "formes": [
+    "Pusher"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "PySpark": {
+   "formes": [
+    "PySpark"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "PyTorch": {
+   "formes": [
+    "PyTorch"
+   ],
+   "precision": 1.0,
+   "vu": 2
+  },
+  "Pytest": {
+   "formes": [
+    "Pytest"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "Python": {
+   "formes": [
+    "Python",
+    "python",
+    "python3",
+    "بايثون"
+   ],
+   "precision": 1.0,
+   "vu": 21
+  },
+  "QGIS": {
+   "formes": [
+    "QGIS"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "QlikView": {
+   "formes": [
+    "QlikView"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "Qt": {
+   "formes": [
+    "Qt"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "Quarkus": {
+   "formes": [
+    "Quarkus"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "RAG": {
+   "formes": [
+    "RAG"
+   ],
+   "precision": 1.0,
+   "vu": 3
+  },
+  "React": {
+   "formes": [
+    "React",
+    "react js",
+    "react.js",
+    "reactjs"
+   ],
+   "precision": 0.9,
+   "vu": 10
+  },
+  "React Native": {
+   "formes": [
+    "React Native"
+   ],
+   "precision": 1.0,
+   "vu": 3
+  },
+  "Redis": {
+   "formes": [
+    "Redis"
+   ],
+   "precision": 1.0,
+   "vu": 2
+  },
+  "Row Level Security": {
+   "formes": [
+    "Row Level Security"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "SEO": {
+   "formes": [
+    "SEO"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "SFTP": {
+   "formes": [
+    "SFTP"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "SMTP": {
+   "formes": [
+    "SMTP"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "SQL": {
+   "formes": [
+    "SQL"
+   ],
+   "precision": 0.952,
+   "vu": 21
+  },
+  "SQL Server": {
+   "formes": [
+    "SQL Server",
+    "microsoft sql server",
+    "ms sql",
+    "mssql"
+   ],
+   "precision": 0.875,
+   "vu": 8
+  },
+  "SSH": {
+   "formes": [
+    "SSH"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "SSL": {
+   "formes": [
+    "SSL"
+   ],
+   "precision": 1.0,
+   "vu": 2
+  },
+  "SSR": {
+   "formes": [
+    "SSR"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "SVN": {
+   "formes": [
+    "SVN"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "Salesforce OMS": {
+   "formes": [
+    "Salesforce OMS"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "Scikit-learn": {
+   "formes": [
+    "Scikit-learn"
+   ],
+   "precision": 1.0,
+   "vu": 2
+  },
+  "Scrum": {
+   "formes": [
+    "Scrum"
+   ],
+   "precision": 0.875,
+   "vu": 8
+  },
+  "Shopify": {
+   "formes": [
+    "Shopify"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "Snowflake": {
+   "formes": [
+    "Snowflake"
+   ],
+   "precision": 1.0,
+   "vu": 2
+  },
+  "Socket.IO": {
+   "formes": [
+    "Socket.IO"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "Spark": {
+   "formes": [
+    "Spark"
+   ],
+   "precision": 1.0,
+   "vu": 2
+  },
+  "Spring": {
+   "formes": [
+    "Spring",
+    "spring"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "Spring Boot": {
+   "formes": [
+    "Spring Boot",
+    "springboot"
+   ],
+   "precision": 1.0,
+   "vu": 4
+  },
+  "Star Schema": {
+   "formes": [
+    "Star Schema"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "Supabase": {
+   "formes": [
+    "Supabase"
+   ],
+   "precision": 1.0,
+   "vu": 2
+  },
+  "Swift": {
+   "formes": [
+    "Swift"
+   ],
+   "precision": 1.0,
+   "vu": 2
+  },
+  "Symfony": {
+   "formes": [
+    "Symfony"
+   ],
+   "precision": 1.0,
+   "vu": 2
+  },
+  "Synapse Analytics": {
+   "formes": [
+    "Synapse Analytics"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "Système d’Information Géographique": {
+   "formes": [
+    "Système d’Information Géographique"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "TCP/IP": {
+   "formes": [
+    "TCP/IP"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "TDD": {
+   "formes": [
+    "TDD"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "TLS": {
+   "formes": [
+    "TLS"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "Tailwind CSS": {
+   "formes": [
+    "Tailwind CSS",
+    "tailwind",
+    "tailwindcss"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "TensorFlow": {
+   "formes": [
+    "TensorFlow"
+   ],
+   "precision": 1.0,
+   "vu": 2
+  },
+  "Terraform": {
+   "formes": [
+    "Terraform"
+   ],
+   "precision": 1.0,
+   "vu": 3
+  },
+  "TestFlight": {
+   "formes": [
+    "TestFlight"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "TimeXtender": {
+   "formes": [
+    "TimeXtender"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "Tomcat": {
+   "formes": [
+    "Tomcat"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "TypeScript": {
+   "formes": [
+    "TS",
+    "TypeScript",
+    "typescript"
+   ],
+   "precision": 1.0,
+   "vu": 9
+  },
+  "Typesense": {
+   "formes": [
+    "Typesense"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "Ubuntu": {
+   "formes": [
+    "Ubuntu"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "Unittest": {
+   "formes": [
+    "Unittest"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "Unix": {
+   "formes": [
+    "Unix"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "Vagrant": {
+   "formes": [
+    "Vagrant"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "Vercel v0": {
+   "formes": [
+    "Vercel v0"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "Vue.js": {
+   "formes": [
+    "Vue.js",
+    "vue",
+    "vue 3",
+    "vue3",
+    "vuejs"
+   ],
+   "precision": 1.0,
+   "vu": 4
+  },
+  "Vuex": {
+   "formes": [
+    "Vuex"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "Web Performance": {
+   "formes": [
+    "Web Performance"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "WebDev": {
+   "formes": [
+    "WebDev"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "WebSockets": {
+   "formes": [
+    "WebSockets"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "Webpack": {
+   "formes": [
+    "Webpack"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "WhatsApp API": {
+   "formes": [
+    "WhatsApp API"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "WinDev": {
+   "formes": [
+    "WinDev"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "WinDev Mobile": {
+   "formes": [
+    "WinDev Mobile"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "WinForms": {
+   "formes": [
+    "WinForms"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "Windows": {
+   "formes": [
+    "Windows"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "Windows system administration": {
+   "formes": [
+    "Windows system administration"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "WooCommerce": {
+   "formes": [
+    "WooCommerce"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "WordPress": {
+   "formes": [
+    "WordPress"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "XGBoost": {
+   "formes": [
+    "XGBoost"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "XML": {
+   "formes": [
+    "XML"
+   ],
+   "precision": 1.0,
+   "vu": 2
+  },
+  "Xray": {
+   "formes": [
+    "Xray"
+   ],
+   "precision": 1.0,
+   "vu": 2
+  },
+  "ZATCA": {
+   "formes": [
+    "ZATCA"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "Zoho": {
+   "formes": [
+    "Zoho"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "Zoho Analytics": {
+   "formes": [
+    "Zoho Analytics"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "Zoho Books": {
+   "formes": [
+    "Zoho Books"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "Zoho CRM": {
+   "formes": [
+    "Zoho CRM"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "Zoho Creator": {
+   "formes": [
+    "Zoho Creator"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "Zoho Desk": {
+   "formes": [
+    "Zoho Desk"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "Zoho Projects": {
+   "formes": [
+    "Zoho Projects"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "administration des ventes": {
+   "formes": [
+    "administration des ventes"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "administration système": {
+   "formes": [
+    "administration système"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "algorithms": {
+   "formes": [
+    "algorithms"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "analyse de données": {
+   "formes": [
+    "analyse de données"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "analyse fonctionnelle": {
+   "formes": [
+    "analyse fonctionnelle"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "architecture mobile": {
+   "formes": [
+    "architecture mobile"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "bases de données relationnelles": {
+   "formes": [
+    "bases de données relationnelles"
+   ],
+   "precision": 1.0,
+   "vu": 7
+  },
+  "bases vectorielles": {
+   "formes": [
+    "bases vectorielles",
+    "moteurs vectoriels",
+    "vector database",
+    "vector databases"
+   ],
+   "precision": 1.0,
+   "vu": 3
+  },
+  "chatbots": {
+   "formes": [
+    "chatbots"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "community management": {
+   "formes": [
+    "community management"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "conception orientée objet": {
+   "formes": [
+    "conception orientée objet"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "cybersécurité": {
+   "formes": [
+    "cyber security",
+    "cybersecurity",
+    "cybersécurité"
+   ],
+   "precision": 1.0,
+   "vu": 2
+  },
+  "data analytics": {
+   "formes": [
+    "data analytics"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "data governance": {
+   "formes": [
+    "data governance"
+   ],
+   "precision": 1.0,
+   "vu": 2
+  },
+  "data lake": {
+   "formes": [
+    "data lake"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "data modeling": {
+   "formes": [
+    "data modeling",
+    "data modelling",
+    "database design",
+    "modélisation de données"
+   ],
+   "precision": 1.0,
+   "vu": 5
+  },
+  "data observability": {
+   "formes": [
+    "data observability"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "data vault": {
+   "formes": [
+    "data vault"
+   ],
+   "precision": 1.0,
+   "vu": 3
+  },
+  "data visualization": {
+   "formes": [
+    "data visualization"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "data warehouse": {
+   "formes": [
+    "data warehouse",
+    "data warehousing"
+   ],
+   "precision": 1.0,
+   "vu": 4
+  },
+  "database normalization": {
+   "formes": [
+    "database normalization"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "database security": {
+   "formes": [
+    "database security"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "dbt": {
+   "formes": [
+    "dbt"
+   ],
+   "precision": 1.0,
+   "vu": 3
+  },
+  "design patterns": {
+   "formes": [
+    "design patterns"
+   ],
+   "precision": 1.0,
+   "vu": 2
+  },
+  "dimensional modeling": {
+   "formes": [
+    "dimensional modeling"
+   ],
+   "precision": 1.0,
+   "vu": 2
+  },
+  "développement front-end": {
+   "formes": [
+    "développement front-end"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "embeddings": {
+   "formes": [
+    "embeddings"
+   ],
+   "precision": 1.0,
+   "vu": 2
+  },
+  "feature engineering": {
+   "formes": [
+    "feature engineering"
+   ],
+   "precision": 1.0,
+   "vu": 2
+  },
+  "gestion de projets techniques": {
+   "formes": [
+    "gestion de projets techniques"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "géolocalisation": {
+   "formes": [
+    "géolocalisation"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "iOS": {
+   "formes": [
+    "iOS",
+    "برمجة ios"
+   ],
+   "precision": 1.0,
+   "vu": 8
+  },
+  "indexing": {
+   "formes": [
+    "indexing"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "intelligence artificielle agentique": {
+   "formes": [
+    "agentic ai",
+    "ai agents",
+    "ia agentique",
+    "intelligence artificielle agentique"
+   ],
+   "precision": 1.0,
+   "vu": 2
+  },
+  "intelligence artificielle générative": {
+   "formes": [
+    "generative ai",
+    "ia générative",
+    "intelligence artificielle générative"
+   ],
+   "precision": 1.0,
+   "vu": 5
+  },
+  "intégration continue": {
+   "formes": [
+    "continuous integration",
+    "intégration continue"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "metadata management": {
+   "formes": [
+    "metadata management"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "microservices": {
+   "formes": [
+    "micro-services",
+    "microservice",
+    "microservices"
+   ],
+   "precision": 0.857,
+   "vu": 7
+  },
+  "métiers IT": {
+   "formes": [
+    "métiers IT"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "n8n": {
+   "formes": [
+    "n8n"
+   ],
+   "precision": 1.0,
+   "vu": 2
+  },
+  "observabilité": {
+   "formes": [
+    "observabilité"
+   ],
+   "precision": 1.0,
+   "vu": 2
+  },
+  "probabilités": {
+   "formes": [
+    "probabilités"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "programmation orientée objet": {
+   "formes": [
+    "oop",
+    "poo",
+    "programmation orientée objet"
+   ],
+   "precision": 1.0,
+   "vu": 4
+  },
+  "programmation parallèle": {
+   "formes": [
+    "programmation parallèle"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "prompt engineering": {
+   "formes": [
+    "prompt engineering"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "recommendation systems": {
+   "formes": [
+    "recommendation systems"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "recouvrement": {
+   "formes": [
+    "recouvrement"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "reverse proxy": {
+   "formes": [
+    "reverse proxy"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "robotique": {
+   "formes": [
+    "robotique"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "semantic layers": {
+   "formes": [
+    "semantic layers"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "serverless": {
+   "formes": [
+    "serverless"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "slowly changing dimensions": {
+   "formes": [
+    "slowly changing dimensions"
+   ],
+   "precision": 1.0,
+   "vu": 2
+  },
+  "sourcing": {
+   "formes": [
+    "sourcing"
+   ],
+   "precision": 1.0,
+   "vu": 2
+  },
+  "statistiques": {
+   "formes": [
+    "statistiques"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "stored procedures": {
+   "formes": [
+    "stored procedures"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "systèmes distribués": {
+   "formes": [
+    "systèmes distribués"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "sécurité applicative": {
+   "formes": [
+    "sécurité applicative"
+   ],
+   "precision": 1.0,
+   "vu": 2
+  },
+  "sécurité de l'information": {
+   "formes": [
+    "information security",
+    "sécurité de l'information",
+    "أمن المعلومات"
+   ],
+   "precision": 1.0,
+   "vu": 2
+  },
+  "sécurité des applications web": {
+   "formes": [
+    "sécurité des applications web"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "sécurité web": {
+   "formes": [
+    "sécurité web"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "tests A/B": {
+   "formes": [
+    "tests A/B"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "time-series modeling": {
+   "formes": [
+    "time-series modeling"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "triggers": {
+   "formes": [
+    "triggers"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "unsupervised learning": {
+   "formes": [
+    "unsupervised learning"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "views": {
+   "formes": [
+    "views"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "virtualisation": {
+   "formes": [
+    "virtualisation"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "web services": {
+   "formes": [
+    "web services"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "webhooks": {
+   "formes": [
+    "webhook",
+    "webhooks"
+   ],
+   "precision": 1.0,
+   "vu": 4
+  },
+  "Électricité": {
+   "formes": [
+    "Électricité"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "سلة": {
+   "formes": [
+    "سلة"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  },
+  "منصة زد": {
+   "formes": [
+    "منصة زد"
+   ],
+   "precision": 1.0,
+   "vu": 1
+  }
+ },
+ "seuil_lexique": 0.8,
+ "strategie_duree": "si_trouvee",
+ "version": "v3.2"
+}
