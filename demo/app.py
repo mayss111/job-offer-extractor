@@ -18,6 +18,7 @@ from sentence_transformers import SentenceTransformer
 from transformers import AutoModelForCausalLM, AutoTokenizer
 
 from normalisation import canon, cle, ensemble
+from post_traitement import Lexique, corriger_duree
 
 BASE_MODEL = "Qwen/Qwen2.5-1.5B-Instruct"
 ADAPTER = os.environ.get("ADAPTER_REPO", "mayss1/qwen2.5-1.5b-offres-tn-lora")
@@ -98,6 +99,20 @@ def reparer(brut: str) -> str:
     return t[:debut] + json.dumps(items, ensure_ascii=False) + "}"
 
 
+# Post-traitement v3.2 (réglages et lexique produits par le notebook 09)
+_PT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "post_traitement_v3_2.json")
+if os.path.exists(_PT):
+    with open(_PT, encoding="utf-8") as f:
+        _cfg = json.load(f)
+    STRATEGIE_DUREE, SEUIL_LEXIQUE = _cfg["strategie_duree"], _cfg["seuil_lexique"]
+    LEXIQUE = Lexique(_cfg["lexique"]) if SEUIL_LEXIQUE is not None else None
+    VERSION = _cfg.get("version", "v3.2")
+else:  # sans le fichier : pipeline v3 d'origine
+    STRATEGIE_DUREE, SEUIL_LEXIQUE, LEXIQUE, VERSION = "modele", None, None, "v3"
+print(f"Pipeline {VERSION} | durée : {STRATEGIE_DUREE} | lexique : "
+      f"{len(LEXIQUE.entrees) if LEXIQUE else 0} compétences")
+
+
 def garde_fous(pred: dict) -> dict:
     if isinstance(pred.get("remuneration"), str) and pred["remuneration"].strip().lower() in {"confidentiel", "confidential"}:
         pred["remuneration"] = None
@@ -129,8 +144,13 @@ def extraire(offre: str):
         except (json.JSONDecodeError, ValueError):
             return None, "❌ Le modèle n'a pas produit de JSON exploitable.\n\n```\n" + brut[:1500] + "\n```"
     pred = garde_fous(pred)
+    pred = corriger_duree(pred, offre, STRATEGIE_DUREE)
+    ajouts = []
+    if LEXIQUE is not None and isinstance(pred.get("competences"), list):
+        pred["competences"], ajouts = LEXIQUE.completer(pred["competences"], offre, seuil=SEUIL_LEXIQUE)
+    pred["_ajouts"] = ajouts
     try:
-        Offre.model_validate(pred)
+        Offre.model_validate({k: v for k, v in pred.items() if not k.startswith("_")})
     except ValidationError as e:
         notes.append(f"⚠️ La sortie ne respecte pas entièrement le schéma ({len(e.errors())} écart(s)).")
     return pred, "\n".join(notes)
@@ -182,8 +202,12 @@ def analyser(offre, cv):
     tableau = "| Champ | Valeur |\n|---|---|\n" + "\n".join(
         f"| {nom} | {pred.get(cle_) if pred.get(cle_) is not None else '—'} |" for cle_, nom in CHAMPS)
     comps = pred.get("competences") or []
-    tableau += f"\n\n**Compétences ({len(comps)})** : " + (", ".join(comps) if comps else "—")
-    tableau += f"\n\n<sub>Extraction en {duree:.0f} s ({DEVICE.upper()}).</sub>"
+    ajouts = set(pred.pop("_ajouts", []))
+    tableau += f"\n\n**Compétences ({len(comps)})** : " + (
+        ", ".join(f"{c} ➕" if c in ajouts else c for c in comps) if comps else "—")
+    if ajouts:
+        tableau += "\n\n<sub>➕ = retrouvée dans le texte par le lexique (le modèle l'avait oubliée).</sub>"
+    tableau += f"\n\n<sub>Pipeline {VERSION} · extraction en {duree:.0f} s ({DEVICE.upper()}).</sub>"
     if note:
         tableau += "\n\n" + note
 
