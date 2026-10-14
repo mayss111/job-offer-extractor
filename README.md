@@ -4,6 +4,8 @@ Un petit modèle de langage (**Qwen2.5-1.5B-Instruct**) fine-tuné avec **QLoRA*
 
 C'est la première brique d'un agent de tri d'offres : l'étape suivante compare les compétences extraites à un CV.
 
+**▶ Démo** : [`notebooks/08_demo.ipynb`](notebooks/08_demo.ipynb) lance l'interface Gradio sur Colab (lien public temporaire) : on colle une offre, on obtient la fiche structurée, puis les compétences communes, proches et manquantes par rapport à un profil.
+
 > Projet réalisé en octobre 2026 sur un GPU T4 gratuit (Google Colab), avec un dataset annoté à la main.
 
 ---
@@ -12,15 +14,19 @@ C'est la première brique d'un agent de tri d'offres : l'étape suivante compare
 
 Résultats sur un **test vierge** : 14 nouvelles offres, annotées sans regarder aucune sortie de modèle et jamais utilisées pour prendre une décision.
 
-| | Modèle de base | **Pipeline final (v3)** |
-|---|---|---|
-| Sorties qui respectent le schéma | 3 / 14 | **13 / 14** |
-| F1 des compétences | 0,19 | **0,50** |
-| Ville correcte | 4 / 14 | **13 / 14** |
-| Langue correcte | 8 / 14 | **13 / 14** |
-| Type de contrat correct | 9 / 14 | **11 / 14** |
+| | Modèle de base | **Pipeline v3** | Pipeline v3.2 (post-traitement)¹ |
+|---|---|---|---|
+| Sorties qui respectent le schéma | 3 / 14 | **13 / 14** | 13 / 14 |
+| F1 des compétences | 0,19 | **0,50** | 0,65 |
+| Rappel des compétences | 0,14 | **0,43** | 0,63 |
+| Durée correcte | 9 / 14 | **11 / 14** | 13 / 14 |
+| Ville correcte | 4 / 14 | **13 / 14** | 13 / 14 |
+| Langue correcte | 8 / 14 | **13 / 14** | 13 / 14 |
+| Type de contrat correct | 9 / 14 | **11 / 14** | 11 / 14 |
 
-Sur le test utilisé pendant le développement, le F1 des compétences atteignait 0,70. L'écart avec le test vierge (0,50) montre que ce premier test était optimiste ; les deux chiffres sont présentés plus bas.
+¹ La v3.2 ajoute deux règles déterministes après le modèle (durée relue dans le texte, lexique des compétences), construites sur le train et réglées sur le test de développement. Le test vierge avait déjà été consulté une fois pour mesurer la v3 : ce chiffre est donc **indicatif**, et le résultat de référence reste celui de la v3.
+
+Sur le test utilisé pendant le développement, le F1 des compétences atteignait 0,70 (0,79 avec la v3.2). L'écart avec le test vierge montre que ce premier test était optimiste ; tous les chiffres sont présentés plus bas.
 
 Ce qui a compté le plus n'est pas l'entraînement lui-même, mais **l'analyse d'erreurs** : elle a révélé des boucles de répétition (corrigées en changeant l'ordre des champs), puis des étiquettes incomplètes (corrigées par une réannotation avec un guide précis).
 
@@ -39,7 +45,8 @@ flowchart LR
     D -- oui --> F[Validation Pydantic]
     E --> F
     F --> G[Garde-fous métier]
-    G --> H[JSON structuré]
+    G --> P[Post-traitement v3.2<br/>durée + lexique]
+    P --> H[JSON structuré]
 ```
 
 1. **Nettoyage** : suppression du texte d'interface copié avec la page (« Sauvegarder », nombre de candidats, titre répété).
@@ -47,6 +54,9 @@ flowchart LR
 3. **Réparation** : si le modèle boucle sur la liste des compétences, la liste est coupée au premier doublon et le JSON est refermé. Possible parce que `competences` est le **dernier** champ.
 4. **Validation** du schéma avec Pydantic.
 5. **Garde-fous** : règles simples et vérifiables (par exemple « Confidentiel » en rémunération devient `null`).
+6. **Post-traitement v3.2** ([`demo/post_traitement.py`](demo/post_traitement.py)) :
+   - **durée** relue dans le texte : fourchette → borne basse, jours ÷ 30, semaines × 7 ÷ 30, en ignorant l'expérience demandée, les dates de publication, la période d'essai et les rythmes hebdomadaires (« 2 jours de télétravail par semaine ») ;
+   - **lexique** de 337 compétences issues des annotations, chacune avec une précision mesurée (part des offres où le mot apparaît *et* est une compétence demandée). Une compétence oubliée par le modèle mais présente mot pour mot dans l'offre est ajoutée si sa précision est ≥ 0,8. Dans la démo, ces ajouts sont marqués ➕.
 
 ---
 
@@ -165,6 +175,27 @@ Ce test de développement a servi à analyser les erreurs et à réviser les ét
 | Compétences rappel | 0,14 | 0,37 | 0,43 |
 | Taux d'ancrage | 0,67 | 0,74 | 0,68 |
 
+### v3.2 — post-traitement déterministe
+
+Le modèle n'est pas réentraîné : on réutilise ses sorties déjà enregistrées. **Protocole** : règles et lexique construits sur le train ; stratégie de durée et seuil du lexique choisis sur le test de développement ; test vierge évalué une seule fois avec les réglages figés (lexique reconstruit sur train + dev, comme dans la démo).
+
+| Métrique | dev · v3 | dev · **v3.2** | vierge · v3 | vierge · **v3.2** |
+|---|---|---|---|---|
+| Durée | 10/14 | **14/14** | 11/14 | **13/14** |
+| Compétences précision | 0,73 | 0,76 | 0,62 | 0,68 |
+| Compétences rappel | 0,67 | **0,83** | 0,43 | **0,63** |
+| **Compétences F1** | 0,70 | **0,79** | 0,50 | **0,65** |
+| Compétences / offre (étiquettes : 15,6 au vierge) | 13,4 | 16,1 | 10,7 | 14,5 |
+| Taux d'ancrage | 0,79 | 0,81 | 0,68 | 0,71 |
+
+Les autres champs ne changent pas (les règles n'y touchent pas). La durée « dev · v3 » vaut 10/14 et non 9/14 comme plus haut, car les étiquettes ont été corrigées entre-temps (règle v3.1 des fourchettes).
+
+**Lecture :**
+- Le lexique fait monter le **rappel** de 20 points au test vierge **sans baisser la précision**, qui monte aussi : les compétences ajoutées sont, pour la plupart, de vraies compétences que le modèle avait oubliées.
+- Choix du seuil sur le dev : sans lexique F1 0,70 ; seuil 0,5 → 0,78 ; 0,7 → 0,79 ; **0,8 → 0,79** ; 0,9 → 0,78 ; 1,0 → 0,78. Le gain vient du lexique lui-même, le seuil exact compte peu.
+- Erreurs du lexique visibles sur le dev : 34 ajouts sur 38 sont dans les étiquettes ; les 4 autres (« microservices », « ASP.NET Core », « ERP », « gestion commerciale ») sont des mots présents dans l'offre sans être des compétences demandées.
+- Règle de durée seule, comparée aux étiquettes du train : **49/54**. Trois des cinq écarts sont des missions Mostaql en arabe étiquetées `null` alors que le texte indique un nombre de jours : erreurs d'annotation probables, à vérifier.
+
 **Ce que montre le test vierge :**
 - **Le format et les champs simples généralisent bien** : schéma, entreprise, ville et langue restent au niveau du test de développement.
 - **Les compétences baissent nettement** (F1 0,70 → 0,50). Le problème principal est le **rappel** : le modèle prédit en moyenne 10,7 compétences par offre alors que les étiquettes en comptent 15,6, et il résume parfois au lieu de lister (« développement web full-stack » au lieu de JavaScript, TypeScript, Node.js, React…).
@@ -249,6 +280,9 @@ La v3 « perd » 3 offres sur la durée. Analyse : deux offres PFE indiquent « 
 ### Test vierge — la mesure honnête
 14 nouvelles offres annotées à l'aveugle. Le format reste solide, mais le F1 des compétences tombe à 0,50 : voir la section Résultats.
 
+### v3.2 — corriger les faiblesses mesurées, sans réentraîner
+Les deux faiblesses du test vierge (rappel des compétences, calcul des durées) sont traitées par du code plutôt que par un nouvel entraînement : une règle de durée et un lexique des compétences avec une précision mesurée. Réglages choisis sur le dev uniquement. Au test vierge (indicatif), le F1 des compétences passe de 0,50 à 0,65 et la durée de 11/14 à 13/14.
+
 ---
 
 ## Limites
@@ -258,8 +292,9 @@ La v3 « perd » 3 offres sur la durée. Analyse : deux offres PFE indiquent « 
 - **Rappel des compétences limité** sur les offres qui en listent beaucoup (jusqu'à 49 dans le test vierge).
 - **Peu d'offres LinkedIn** à l'entraînement : le modèle généralise mal à ce format.
 - **Arabe peu représentatif** : 10 des 13 offres en arabe sont des missions freelance (Mostaql), les 3 autres viennent d'Arabie saoudite, dont 2 traduites automatiquement par la plateforme. Aucune offre d'emploi tunisienne en arabe n'a été trouvée.
-- **Arithmétique** : le modèle convertit mal les jours en mois (3 jours → 0,33 au lieu de 0,1).
-- **Garde-fou de durée inefficace** : il devait forcer `null` quand l'offre ne contient aucune durée, mais il détecte « 3 ans d'expérience » comme une durée. Il n'a donc rien corrigé.
+- **Arithmétique** : le modèle convertit mal les jours en mois (3 jours → 0,33 au lieu de 0,1). Corrigé en v3.2 par une règle en code, qui remplace l'ancien garde-fou de durée (il détectait « 3 ans d'expérience » comme une durée et ne corrigeait rien).
+- **Test vierge déjà consulté** : il a servi à mesurer la v3 avant la conception de la v3.2. Les chiffres v3.2 sur ce test sont indicatifs ; une validation définitive demande un second test vierge.
+- **Le lexique ne connaît que les compétences déjà annotées** (337) : il n'aide pas sur une technologie jamais vue, et il peut ajouter un mot cité sans être demandé.
 - **Un seul entraînement par version**, sans moyenne sur plusieurs graines.
 - **Pas d'ensemble de validation** pour suivre le surapprentissage pendant l'entraînement.
 
@@ -267,10 +302,10 @@ La v3 « perd » 3 offres sur la durée. Analyse : deux offres PFE indiquent « 
 
 ## Prochaines étapes
 
-1. **Dictionnaire de normalisation des compétences** en post-traitement, construit à partir du guide (« Prisma ORM » → « Prisma », « REST APIs » → « API REST »). Il servira aussi au matching.
+1. **Test vierge 2** : 14 nouvelles offres annotées à l'aveugle, pour valider la v3.2 sans biais.
 2. **v4** : plus de données (offres LinkedIn, offres d'emploi en arabe hors freelance, listes de compétences longues), et `duree_mois` remplacé par `duree_valeur` + `duree_unite`, la conversion se faisant en code.
 3. **Matching** : revoir le score (couverture du point de vue du *profil*, pondération des compétences selon leur importance dans l'offre), puis l'évaluer sur un lot plus grand, noté par davantage de personnes.
-4. **Démo** : Space Hugging Face, puis application React + NestJS.
+4. **Démo** : application React + NestJS (la démo actuelle est une interface Gradio lancée depuis Colab).
 
 ---
 
@@ -286,10 +321,19 @@ La v3 « perd » 3 offres sur la durée. Analyse : deux offres PFE indiquent « 
 │   ├── 04_v2.ipynb              # compétences en dernier + réparation
 │   ├── 05_v3.ipynb              # étiquettes v3 + métriques complètes
 │   ├── 06_test_vierge.ipynb     # évaluation sur le test vierge (sans réentraînement)
-│   └── 07_matching.ipynb        # matching profil ↔ offre et son évaluation (CPU)
+│   ├── 07_matching.ipynb        # matching profil ↔ offre et son évaluation (CPU)
+│   ├── 08_demo.ipynb            # lance la démo Gradio sur Colab
+│   └── 09_post_traitement.ipynb # pipeline v3.2 : règle de durée + lexique (CPU)
+├── demo/
+│   ├── app.py                   # interface Gradio (extraction + comparaison avec un profil)
+│   ├── post_traitement.py       # règles v3.2, partagées par le notebook 09 et la démo
+│   ├── normalisation.py         # noms canoniques des compétences
+│   ├── post_traitement_v3_2.json# réglages figés + lexique
+│   └── requirements.txt
 └── resultats/
     ├── comparaison_finale_v3.csv
     ├── comparaison_test_vierge.csv
+    ├── comparaison_v32.csv
     ├── matching_evaluation.csv
     ├── matching_evaluation_finale.csv
     ├── matching_evaluation_lot3.csv
@@ -302,14 +346,13 @@ La v3 « perd » 3 offres sur la durée. Analyse : deux offres PFE indiquent « 
 2. Placer vos propres données dans `MyDrive/job-offer-extractor/data/` au format JSONL décrit dans le guide (`offre`, `extraction`, `source`, `url`).
 3. Exécuter les notebooks dans l'ordre. Le notebook 03 crée le découpage train / test, que les suivants réutilisent.
 
-**Stack :** Python · PyTorch · Hugging Face Transformers · PEFT · bitsandbytes · Pydantic · pandas
+**Stack :** Python · PyTorch · Hugging Face Transformers · PEFT · bitsandbytes · Pydantic · pandas · sentence-transformers · Gradio
 
 ---
 
 ## Auteure
 
 **Mayss Jaballi** — étudiante ingénieure en développement web, ESPRIT (Tunisie).
- et ce projet est ma porte d'entrée vers le ML appliqué.
+Je travaille principalement avec React et NestJS, et ce projet est ma porte d'entrée vers le ML appliqué.
 
-jaballimayss@gmail.com
-https://www.linkedin.com/in/mayss-jaballi-08145028a/
+<!-- Ajoute ici ton LinkedIn et ton email -->
